@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>미오탱 최신 시그 목록</title> <style>
+    <title>미오탱 최신 시그 목록</title>
+    <style>
         /* CSS 스타일 시작 */
         body {
             font-family: 'Arial', sans-serif;
@@ -102,41 +103,13 @@
     <div class="header">
         <img id="profileImage" src="https://via.placeholder.com/100/007bff/ffffff?text=MIO" alt="프로필 사진" class="profile-img">
         
-        <h1>미오탱 최신 시그 목록</h1> <p class="subtitle">특별한 목록을 검색해 보세요!</p>
+        <h1>미오탱 최신 시그 목록</h1>
+        <p class="subtitle">특별한 목록을 검색해 보세요!</p>
     </div>
 
     <input type="text" id="search-box" placeholder="시그 제목으로 검색..." onkeyup="filterList()">
 
     <ul id="item-list" class="item-list">
-        <li class="list-item"><span class="number">112</span><span class="content">진압해</span></li>
-        <li class="list-item"><span class="number">10025</span><span class="content">레전드탱플단</span></li>
-    </ul>
-</div>
-
-<script>
-    function filterList() {
-        // 1. 검색어 가져오기 (대소문자 구분 없이)
-        let input = document.getElementById('search-box');
-        let filter = input.value.toUpperCase();
-        let ul = document.getElementById('item-list');
-        let li = ul.getElementsByTagName('li');
-
-        // 2. 목록을 순회하며 검색어와 일치하는지 확인
-        for (let i = 0; i < li.length; i++) {
-            // 항목의 번호와 내용 모두에서 검색
-            let textValue = li[i].textContent || li[i].innerText;
-            
-            // 검색어에 항목 텍스트가 포함되어 있으면 보이고, 아니면 숨깁니다.
-            if (textValue.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "flex"; // 검색되면 보여주기
-            } else {
-                li[i].style.display = "none"; // 검색되지 않으면 숨기기
-            }
-        }
-    }
-</script>
-</html>
-    <ul class="item-list">
         <li class="list-item"><span class="number">112</span><span class="content">진압해</span></li>
         <li class="list-item"><span class="number">123</span><span class="content">내얘길들어봐</span></li>
         <li class="list-item"><span class="number">124</span><span class="content">왜요왜요</span></li>
@@ -427,7 +400,7 @@
         <li class="list-item"><span class="number">2024</span><span class="content">슈퍼영원한편돌이</span></li>
         <li class="list-item"><span class="number">2030</span><span class="content">킹황태자</span></li>
         <li class="list-item"><span class="number">2042</span><span class="content">큰라네트</span></li>
-        <li class="list-item"><span class="content">2050</span><span class="content">쑥대머리</span></li>
+        <li class="list-item"><span class="number">2050</span><span class="content">쑥대머리</span></li>
         <li class="list-item"><span class="number">2052</span><span class="content">큰오승환</span></li>
         <li class="list-item"><span class="number">2054</span><span class="content">큰없네</span></li>
         <li class="list-item"><span class="number">2057</span><span class="content">뭉크뭉</span></li>
@@ -495,7 +468,7 @@
         <li class="list-item"><span class="number">2025</span><span class="content">슈퍼킹맛집</span></li>
         <li class="list-item"><span class="number">2040</span><span class="content">슈퍼주남이</span></li>
         <li class="list-item"><span class="number">2077</span><span class="content">12살끄악</span></li>
-        <li class="list-item"><span class="number">2090</span><span class="content">슈퍼 북동이</span></li>
+        <li class="list-item"><span class="number">2090</span><span class="content">슈퍼북동이</span></li>
         <li class="list-item"><span class="number">2125</span><span class="content">포에버탱플단</span></li>
         <li class="list-item"><span class="number">2222</span><span class="content">다크초코핑</span></li>
         <li class="list-item"><span class="number">2486</span><span class="content">메리미 멜로디</span></li>
@@ -506,8 +479,32 @@
         <li class="list-item"><span class="number">2850</span><span class="content">엘제에이2</span></li>
         <li class="list-item"><span class="number">2960</span><span class="content">슈퍼엘제에이</span></li>
         <li class="list-item"><span class="number">2997</span><span class="content">슈퍼엘제에이2</span></li>
-        <li class="list-item"><span class="number">10025</span><span class="content">레전드탱플단</span></li> </ul>
+        <li class="list-item"><span class="number">10025</span><span class="content">레전드탱플단</span></li>
+    </ul>
 </div>
+
+<script>
+    function filterList() {
+        // 1. 검색어 가져오기 (대소문자 구분 없이)
+        let input = document.getElementById('search-box');
+        let filter = input.value.toUpperCase();
+        let ul = document.getElementById('item-list');
+        let li = ul.getElementsByTagName('li');
+
+        // 2. 목록을 순회하며 검색어와 일치하는지 확인
+        for (let i = 0; i < li.length; i++) {
+            // 항목의 번호와 내용 모두에서 검색
+            let textValue = li[i].textContent || li[i].innerText;
+            
+            // 검색어에 항목 텍스트가 포함되어 있으면 보이고, 아니면 숨깁니다.
+            if (textValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "flex"; // 검색되면 보여주기
+            } else {
+                li[i].style.display = "none"; // 검색되지 않으면 숨기기
+            }
+        }
+    }
+</script>
 
 </body>
 </html>
