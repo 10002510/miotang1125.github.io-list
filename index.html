@@ -3,48 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사용자 정의 목록</title>
-    <style>
+    <title>미오탱 최신 시그 목록</title> <style>
         /* CSS 스타일 시작 */
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
             background-color: #f4f4f9;
             color: #333;
         }
-        .list-container {
+        .container {
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
             background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        /* 🥇 헤더 영역 스타일 */
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #eee;
+            margin-bottom: 20px;
+        }
+        .profile-img {
+            width: 100px; /* 프로필 사진 크기 */
+            height: 100px;
+            border-radius: 50%; /* 원형으로 만듭니다 */
+            object-fit: cover;
+            border: 4px solid #007bff; /* 테두리 색상 */
+            margin-bottom: 10px;
         }
         h1 {
             color: #007bff;
-            text-align: center;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            font-size: 1.8em;
+            margin-top: 5px;
+            margin-bottom: 0;
         }
+        .subtitle {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* 🔍 검색창 스타일 */
+        #search-box {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        #search-box:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        /* 📋 목록 스타일 */
         .item-list {
-            list-style: none; /* 기본 불릿 제거 */
+            list-style: none;
             padding: 0;
         }
         .list-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px dashed #eee;
+            padding: 12px 10px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+        }
+        .list-item:hover {
+            background-color: #f9f9f9;
         }
         .list-item:last-child {
-            border-bottom: none; /* 마지막 항목은 줄 제거 */
+            border-bottom: none;
         }
         .number {
             font-weight: bold;
-            color: #dc3545; /* 빨간색으로 강조 */
+            color: #dc3545;
             margin-right: 15px;
-            flex-shrink: 0; /* 공간이 부족해도 줄어들지 않게 */
+            flex-shrink: 0;
+            min-width: 50px; /* 숫자가 길어도 정렬 유지 */
+            text-align: left;
         }
         .content {
             flex-grow: 1;
@@ -55,8 +98,44 @@
 </head>
 <body>
 
-<div class="list-container">
-    <h1>나만의 특별한 목록</h1>
+<div class="container">
+    <div class="header">
+        <img id="profileImage" src="https://via.placeholder.com/100/007bff/ffffff?text=MIO" alt="프로필 사진" class="profile-img">
+        
+        <h1>미오탱 최신 시그 목록</h1> <p class="subtitle">특별한 목록을 검색해 보세요!</p>
+    </div>
+
+    <input type="text" id="search-box" placeholder="시그 제목으로 검색..." onkeyup="filterList()">
+
+    <ul id="item-list" class="item-list">
+        <li class="list-item"><span class="number">112</span><span class="content">진압해</span></li>
+        <li class="list-item"><span class="number">10025</span><span class="content">레전드탱플단</span></li>
+    </ul>
+</div>
+
+<script>
+    function filterList() {
+        // 1. 검색어 가져오기 (대소문자 구분 없이)
+        let input = document.getElementById('search-box');
+        let filter = input.value.toUpperCase();
+        let ul = document.getElementById('item-list');
+        let li = ul.getElementsByTagName('li');
+
+        // 2. 목록을 순회하며 검색어와 일치하는지 확인
+        for (let i = 0; i < li.length; i++) {
+            // 항목의 번호와 내용 모두에서 검색
+            let textValue = li[i].textContent || li[i].innerText;
+            
+            // 검색어에 항목 텍스트가 포함되어 있으면 보이고, 아니면 숨깁니다.
+            if (textValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "flex"; // 검색되면 보여주기
+            } else {
+                li[i].style.display = "none"; // 검색되지 않으면 숨기기
+            }
+        }
+    }
+</script>
+</html>
     <ul class="item-list">
         <li class="list-item"><span class="number">112</span><span class="content">진압해</span></li>
         <li class="list-item"><span class="number">123</span><span class="content">내얘길들어봐</span></li>
